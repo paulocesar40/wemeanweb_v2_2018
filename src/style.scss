@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/bootstrap";
+
+// Base
+@import "./scss/base/_variables";
+@import "./scss/base/_mixins";
+@import "./scss/base/_global";
+
+// Modules
+@import "./scss/modules/_navigation";
+@import "./scss/modules/_header";
+@import "./scss/modules/_services";
+@import "./scss/modules/_about";
+@import "./scss/modules/_testimonials";

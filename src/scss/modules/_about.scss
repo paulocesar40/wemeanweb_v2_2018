@@ -1,0 +1,25 @@
+#about {
+  background-color: lighten($mainBlue, 60%);
+}
+
+.about-title {
+  //color: darken($mainBlue, 10%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  color: $mainOrange;
+  font-weight: $font-weight-light;
+}
+
+h3 {
+  color: $mainOrange;
+  font-weight: $font-weight-medium;
+}
+
+p { 
+  font-weight: $font-weight-light;
+  color: $text-color;
+}

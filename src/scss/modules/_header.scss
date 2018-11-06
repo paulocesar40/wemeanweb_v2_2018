@@ -1,0 +1,93 @@
+#main {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: rgba($pureWhite, 0.8) url("./images/iStock-999811422-small-72dpi.jpg") no-repeat center
+    center / cover;
+  color: rgba($pureWhite, 0.8);
+  //overflow: hidden;
+
+  @include tablet {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: rgba($pureWhite, 0.8) url("./images/iStock-999811422-medium-300dpi.jpg") no-repeat center
+      center / cover;
+    color: rgba($pureWhite, 0.8);
+    //background-attachment: fixed;
+  }
+  
+  @include desktop {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: rgba($pureWhite, 0.8) url("./images/iStock-999811422-xlarge-300dpi.jpg") no-repeat center
+      center / cover;
+    color: rgba($pureWhite, 0.8);
+    //background-attachment: fixed;
+  }
+  
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 0 1rem;
+  color: $pureWhite;
+  font-weight: $font-weight-light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Cursor */
+  .txt-type > .txt {
+    border-right: 0.2rem solid #fff;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: $font-weight-light;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: $font-weight-light;
+  }
+
+  @include tablet {
+    padding: 0 3rem;
+    h1 {
+      font-size: 3rem;
+      font-weight: $font-weight-light;
+    }
+
+    h2 {
+      font-weight: $font-weight-light;
+      font-size: 2rem;
+    }
+  }
+
+  @include desktop {
+    padding: 0 5rem;
+    h1 {
+      font-size: 5rem;
+      font-weight: $font-weight-light;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: $font-weight-light;
+    }
+  }
+
+  .lead {
+    font-weight: $font-weight-light;
+    color: $pureWhite;
+  }
+}

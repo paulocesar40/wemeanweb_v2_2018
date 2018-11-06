@@ -1,0 +1,25 @@
+#services {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-color: #FFF;
+  
+  .card {
+    border: none;
+  }
+
+  h1, h3, p, i {
+    font-weight: $font-weight-light;
+  }
+
+  @include tablet {
+    h1, .lead {
+      text-align: center;
+    }
+  }
+
+  @include desktop {
+    h1, .lead {
+      text-align: center;
+    }
+  }
+}
