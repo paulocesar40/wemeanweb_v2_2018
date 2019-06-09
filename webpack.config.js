@@ -6,18 +6,16 @@ const webpack = require("webpack");
 //const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+//const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //const precss = require('precss');
 
 module.exports = {
   entry: {
-    app: [
-      "font-awesome/scss/font-awesome.scss", 
-      "./src/index.js"
-    ],
+    app: ["font-awesome/scss/font-awesome.scss", "./src/index.js"],
     // include LazySizes
-    vendor: './src/vendor.js'
+    vendor: "./src/vendor.js"
   },
   devServer: {
     contentBase: "./dist",
@@ -29,7 +27,7 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery",
-      Popper: ['popper.js', 'default'],
+      Popper: ["popper.js", "default"],
       Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
       Button: "exports-loader?Button!bootstrap/js/dist/button",
       Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
@@ -50,8 +48,14 @@ module.exports = {
       filename: "index.html",
       template: "src/index.html"
     }),
-    new ExtractTextPlugin({
-      filename: "[name].[hash].css"
+    // new ExtractTextPlugin({
+    //   filename: "[name].[hash].css"
+    // }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].[hash].css",
+      chunkFilename: "[id].css"
     }),
     /*
     new MiniCssExtractPlugin({
@@ -109,7 +113,7 @@ module.exports = {
         use: {
           loader: "html-loader",
           options: {
-            attrs: ['img:src','img:data-src','source:data-srcset']
+            attrs: ["img:src", "img:data-src", "source:data-srcset"]
             //attrs: ["img:src", ":data-src"]
           }
         }
@@ -127,26 +131,19 @@ module.exports = {
       },*/
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader" // translates CSS into CommonJS modules
-            },
-            {
-              loader: "postcss-loader", // Run post css actions
-              /*options: {
-                plugins: function() {
-                  // post css plugins, can be exported to postcss.config.js
-                  return [require("precss"), require("autoprefixer")];
-                }
-              }*/
-            },
-            {
-              loader: "sass-loader" // compiles Sass to CSS
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it use publicPath in webpackOptions.output
+              publicPath: "./dist"
             }
-          ]
-        })
+          },
+          "css-loader",
+          "postcss-loader",
+          "sass-loader"
+        ]
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
